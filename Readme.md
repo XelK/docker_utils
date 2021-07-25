@@ -1,3 +1,12 @@
+# What
+
+Permit to create docker container with kubectl/ansible/terraform/aws-cli and share home folder with host.
+
+# Usage
+1. Build image: `docker build .`
+2. Start and connect to container: `./start.sh`
+
+
 # Notes
 * add share folder into `.dockerignore`
 * impossible specify host folder to share with container into the `Dockerfile`:
