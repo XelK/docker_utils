@@ -15,6 +15,10 @@ RUN bash -c 'if [[ $(echo $(echo "$(<kubectl.sha256) kubectl")|sha256sum --check
 
 # install eksctl
 RUN curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /usr/local/bin
+#install aws-iam-authenticator
+RUN curl --silent -o /usr/local/bin/aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/aws-iam-authenticator && chmod +x /usr/local/bin/aws-iam-authenticator
+#install jq
+RUN curl --sile -o /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux && chmod +x /usr/local/bin/jq
 WORKDIR /root/
 COPY docker-entrypoint.sh /bin/docker-entrypoint.sh
 RUN chmod +x /bin/docker-entrypoint.sh
